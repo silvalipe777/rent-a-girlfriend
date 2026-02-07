@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
-import AgeConfirmModal from "@/components/compliance/AgeConfirmModal";
-import DisclaimerBanner from "@/components/compliance/DisclaimerBanner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,9 +20,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={`${inter.className} antialiased bg-gray-950 text-white`}>
         <Providers>
-          <DisclaimerBanner />
           {children}
-          <AgeConfirmModal />
         </Providers>
       </body>
     </html>

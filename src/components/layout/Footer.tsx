@@ -12,10 +12,7 @@ export default function Footer() {
             <span className="font-bold gradient-text">RentAGirlfriend</span>
           </div>
 
-          <div className="text-center space-y-1">
-            <p className="text-gray-500 text-xs">
-              All characters are fictional and AI-generated. 18+ only.
-            </p>
+          <div className="text-center">
             <p className="text-gray-600 text-[10px]">
               &copy; 2026 Rent a Girlfriend - Virtual AI Companions
             </p>
