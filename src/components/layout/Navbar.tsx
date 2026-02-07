@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import Container from "./Container";
+import WalletBadge from "./WalletBadge";
 import Button from "../ui/Button";
 
 export default function Navbar() {
@@ -42,6 +43,9 @@ export default function Navbar() {
                   {session.user?.name || session.user?.email}
                 </span>
               </div>
+              {session.user?.walletAddress && (
+                <WalletBadge walletAddress={session.user.walletAddress} />
+              )}
               <Button variant="ghost" size="sm" onClick={() => signOut()}>
                 Logout
               </Button>

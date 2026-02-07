@@ -1,5 +1,6 @@
 import Link from "next/link";
 import LoginForm from "@/components/auth/LoginForm";
+import WalletLoginButton from "@/components/auth/WalletLoginButton";
 
 export default function LoginPage() {
   return (
@@ -23,10 +24,24 @@ export default function LoginPage() {
             </div>
           </div>
 
+          {/* Web3 Login */}
+          <WalletLoginButton />
+
+          {/* Divider */}
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-purple-500/15" />
+            </div>
+            <div className="relative flex justify-center text-xs">
+              <span className="px-3 bg-[#0f051e] text-gray-600 uppercase tracking-widest">or</span>
+            </div>
+          </div>
+
+          {/* Email Login */}
           <LoginForm />
 
           <p className="text-center text-gray-600 text-sm">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link href="/register" className="gradient-text font-semibold hover:opacity-80 transition-opacity">
               Sign up
             </Link>
