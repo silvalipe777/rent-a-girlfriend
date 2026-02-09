@@ -2,15 +2,17 @@
 import { useRef, useEffect } from "react";
 import MessageBubble from "./MessageBubble";
 import TypingIndicator from "./TypingIndicator";
+import AnimatedAvatar from "./AnimatedAvatar";
 import type { ChatMessageType } from "@/types";
 
 interface ChatWindowProps {
   messages: ChatMessageType[];
   isLoading: boolean;
   companionName: string;
+  companionAvatar: string | null;
 }
 
-export default function ChatWindow({ messages, isLoading, companionName }: ChatWindowProps) {
+export default function ChatWindow({ messages, isLoading, companionName, companionAvatar }: ChatWindowProps) {
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -22,13 +24,13 @@ export default function ChatWindow({ messages, isLoading, companionName }: ChatW
       {/* Welcome message */}
       {messages.length === 0 && !isLoading && (
         <div className="text-center py-16 space-y-6">
-          <div className="relative w-24 h-24 mx-auto">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-pink-500/30 to-amber-500/30 blur-xl animate-pulse" />
-            <div className="relative w-24 h-24 rounded-full bg-gradient-to-br from-pink-500/20 to-rose-600/20 border border-pink-500/20 flex items-center justify-center">
-              <svg className="w-10 h-10 text-pink-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-              </svg>
-            </div>
+          <div className="flex justify-center">
+            <AnimatedAvatar
+              src={companionAvatar}
+              alt={companionName}
+              size="lg"
+              isTalking={false}
+            />
           </div>
           <div className="space-y-3">
             <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-rose-400 to-amber-400">{companionName}</h2>
@@ -41,16 +43,25 @@ export default function ChatWindow({ messages, isLoading, companionName }: ChatW
         </div>
       )}
 
-      {messages.map((msg, i) => (
-        <MessageBubble
-          key={i}
-          role={msg.role}
-          content={msg.content}
-          companionName={msg.role === "assistant" ? companionName : undefined}
-        />
-      ))}
+      {messages.map((msg, i) => {
+        const isLastAssistant =
+          msg.role === "assistant" &&
+          i === messages.length - 1 &&
+          isLoading;
 
-      {isLoading && <TypingIndicator name={companionName} />}
+        return (
+          <MessageBubble
+            key={i}
+            role={msg.role}
+            content={msg.content}
+            companionName={msg.role === "assistant" ? companionName : undefined}
+            companionAvatar={msg.role === "assistant" ? companionAvatar : undefined}
+            isTalking={isLastAssistant}
+          />
+        );
+      })}
+
+      {isLoading && <TypingIndicator name={companionName} avatar={companionAvatar} />}
 
       <div ref={bottomRef} />
     </div>

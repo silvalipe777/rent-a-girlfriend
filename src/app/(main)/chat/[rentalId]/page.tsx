@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import ChatWindow from "@/components/chat/ChatWindow";
 import ChatInput from "@/components/chat/ChatInput";
-import Avatar from "@/components/ui/Avatar";
+import AnimatedAvatar from "@/components/chat/AnimatedAvatar";
 import Badge from "@/components/ui/Badge";
 import { useChat } from "@/hooks/useChat";
 import { getTimeRemaining } from "@/lib/utils";
@@ -66,8 +66,13 @@ export default function ChatPage() {
       {/* Chat Header */}
       <div className="relative flex items-center gap-4 p-4 border-b border-pink-500/10 bg-gradient-to-r from-[#0B0E11] via-rose-950/10 to-[#0B0E11] backdrop-blur-md">
         <div className="relative">
-          <Avatar src={rental.companion.avatarMain} alt={rental.companion.name} size="sm" />
-          <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-[#0B0E11]" />
+          <AnimatedAvatar
+            src={rental.companion.avatarMain}
+            alt={rental.companion.name}
+            size="sm"
+            isTalking={isLoading}
+          />
+          <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-green-400 border-2 border-[#0B0E11] z-10" />
         </div>
         <div className="flex-1">
           <h2 className="font-bold text-white">{rental.companion.name}</h2>
@@ -92,6 +97,7 @@ export default function ChatPage() {
         messages={messages}
         isLoading={isLoading}
         companionName={rental.companion.name}
+        companionAvatar={rental.companion.avatarMain}
       />
 
       {/* Input */}

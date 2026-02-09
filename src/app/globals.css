@@ -103,3 +103,55 @@ body::before {
   background-size: 200% 100%;
   animation: shimmer 3s infinite;
 }
+
+/* ===== Animated Avatar ===== */
+
+@keyframes avatar-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+.avatar-breathe {
+  animation: avatar-breathe 3s ease-in-out infinite;
+}
+
+@keyframes avatar-talk {
+  0%, 100% { transform: translateY(0) scale(1.02); }
+  25% { transform: translateY(-1.5px) scale(1.04); }
+  50% { transform: translateY(0.5px) scale(1.02); }
+  75% { transform: translateY(-1px) scale(1.03); }
+}
+.avatar-talk {
+  animation: avatar-talk 0.6s ease-in-out infinite;
+}
+
+@keyframes glow-ring-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes glow-ring-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+.glow-ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: 9999px;
+  background: conic-gradient(from 0deg, rgba(236,72,153,0.7), rgba(244,63,94,0.7), rgba(245,158,11,0.7), rgba(236,72,153,0.7));
+  animation: glow-ring-spin 3s linear infinite, glow-ring-pulse 2s ease-in-out infinite;
+  z-index: 0;
+}
+.glow-ring-idle {
+  position: absolute;
+  inset: -2px;
+  border-radius: 9999px;
+  background: conic-gradient(from 0deg, rgba(236,72,153,0.3), rgba(244,63,94,0.3), rgba(245,158,11,0.3), rgba(236,72,153,0.3));
+  animation: glow-ring-spin 6s linear infinite;
+  z-index: 0;
+}
+
+.avatar-glow-talking {
+  box-shadow: 0 0 15px rgba(236,72,153,0.4), 0 0 40px rgba(244,63,94,0.2), 0 0 60px rgba(245,158,11,0.1);
+}
+.avatar-glow-idle {
+  box-shadow: 0 0 10px rgba(236,72,153,0.15), 0 0 25px rgba(244,63,94,0.08);
+}
