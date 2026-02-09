@@ -4,7 +4,6 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import bcrypt from "bcryptjs";
 import { SiweMessage } from "siwe";
 import prisma from "./prisma";
-import { consumeNonce } from "./siwe-nonce";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -81,7 +80,7 @@ export const authOptions: NextAuthOptions = {
         message: { label: "Message", type: "text" },
         signature: { label: "Signature", type: "text" },
       },
-      async authorize(credentials) {
+      async authorize(credentials, req) {
         if (!credentials?.message || !credentials?.signature) return null;
 
         try {
@@ -92,9 +91,14 @@ export const authOptions: NextAuthOptions = {
 
           if (!result.success) return null;
 
-          // Verify nonce was issued by our server
-          const nonceValid = consumeNonce(siweMessage.nonce);
-          if (!nonceValid) return null;
+          // Verify nonce matches the one stored in cookie (serverless-safe)
+          const cookieHeader = req?.headers?.cookie || "";
+          const nonceCookie = cookieHeader
+            .split(";")
+            .map((c: string) => c.trim())
+            .find((c: string) => c.startsWith("siwe-nonce="));
+          const storedNonce = nonceCookie?.split("=")[1];
+          if (!storedNonce || storedNonce !== siweMessage.nonce) return null;
 
           // Verify chain is BSC
           if (siweMessage.chainId !== 56) return null;
