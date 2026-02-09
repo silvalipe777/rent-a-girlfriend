@@ -51,13 +51,13 @@ export default function AdminPage() {
       });
       const data = await res.json();
       if (res.ok) {
-        setMessage(`Imagem gerada: ${data.path}`);
+        setMessage(`Image generated: ${data.path}`);
         fetchCompanions();
       } else {
-        setMessage(`Erro: ${data.error}`);
+        setMessage(`Error: ${data.error}`);
       }
     } catch {
-      setMessage("Erro ao gerar imagem");
+      setMessage("Error generating image");
     }
   };
 
@@ -79,11 +79,11 @@ export default function AdminPage() {
           <h2 className="text-xl font-bold mb-4">Database</h2>
           <div className="flex gap-3">
             <Button onClick={handleSeed} disabled={loading}>
-              {loading ? "Seedando..." : "Seed 10 AI Companions"}
+              {loading ? "Seeding..." : "Seed 10 AI Companions"}
             </Button>
           </div>
           <p className="text-gray-500 text-sm mt-2">
-            Popula o banco com 10 AI Girlfriends pre-configuradas
+            Seeds the database with 10 Crypto AI Companions
           </p>
         </Card>
 
@@ -100,7 +100,7 @@ export default function AdminPage() {
                   {c.avatarMain ? (
                     <Image src={c.avatarMain} alt={c.name} fill className="object-cover" />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-pink-600 font-bold text-xl">
+                    <div className="w-full h-full flex items-center justify-center text-amber-500 font-bold text-xl">
                       {c.name.charAt(0)}
                     </div>
                   )}

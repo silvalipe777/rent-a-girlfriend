@@ -32,7 +32,7 @@ export async function GET(req: Request) {
 
     return NextResponse.json(companions);
   } catch {
-    return NextResponse.json({ error: "Erro interno" }, { status: 500 });
+    return NextResponse.json({ error: "Internal error" }, { status: 500 });
   }
 }
 
@@ -42,6 +42,6 @@ export async function POST(req: Request) {
     const companion = await prisma.aICompanion.create({ data });
     return NextResponse.json(companion, { status: 201 });
   } catch {
-    return NextResponse.json({ error: "Erro ao criar companion" }, { status: 500 });
+    return NextResponse.json({ error: "Error creating companion" }, { status: 500 });
   }
 }

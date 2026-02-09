@@ -1,12 +1,12 @@
 export default function TypingIndicator({ name }: { name?: string }) {
   return (
     <div className="flex justify-start">
-      <div className="bg-white/[0.04] border border-purple-500/10 rounded-2xl rounded-bl-sm px-4 py-3 backdrop-blur-sm">
-        {name && <p className="text-purple-400 text-xs font-semibold mb-1">{name}</p>}
+      <div className="bg-gradient-to-br from-rose-950/40 via-amber-950/30 to-purple-950/30 border border-pink-500/15 rounded-2xl rounded-bl-sm px-5 py-3.5 backdrop-blur-sm shadow-lg shadow-pink-500/5">
+        {name && <p className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-amber-400 text-xs font-bold mb-1.5">{name}</p>}
         <div className="flex gap-1.5">
-          <div className="w-2 h-2 bg-purple-400/60 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-          <div className="w-2 h-2 bg-pink-400/60 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
-          <div className="w-2 h-2 bg-purple-400/60 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+          <div className="w-2 h-2 bg-pink-400/60 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+          <div className="w-2 h-2 bg-rose-400/60 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+          <div className="w-2 h-2 bg-amber-400/60 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
         </div>
       </div>
     </div>

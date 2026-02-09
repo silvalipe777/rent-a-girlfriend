@@ -51,7 +51,7 @@ export default function ChatsPage() {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 rounded-full border-2 border-purple-500/30 border-t-purple-500 animate-spin" />
+          <div className="w-12 h-12 rounded-full border-2 border-amber-500/30 border-t-amber-500 animate-spin" />
           <p className="text-gray-500 text-sm">Loading chats...</p>
         </div>
       </div>
@@ -61,13 +61,13 @@ export default function ChatsPage() {
   return (
     <div className="relative py-12">
       {/* Background orbs */}
-      <div className="absolute top-0 right-[20%] w-80 h-80 bg-purple-600/10 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 left-[10%] w-64 h-64 bg-pink-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 right-[20%] w-80 h-80 bg-amber-600/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 left-[10%] w-64 h-64 bg-yellow-500/10 rounded-full blur-[120px] pointer-events-none" />
 
       <Container className="relative">
         {/* Header */}
         <div className="mb-10">
-          <span className="text-xs uppercase tracking-widest text-purple-400 font-semibold">Your conversations</span>
+          <span className="text-xs uppercase tracking-widest text-amber-400 font-semibold">Your conversations</span>
           <h1 className="text-5xl font-black mt-2">
             <span className="gradient-text">My Chats</span>
           </h1>
@@ -78,8 +78,8 @@ export default function ChatsPage() {
 
         {rentals.length === 0 ? (
           <div className="glass rounded-2xl p-12 text-center space-y-6">
-            <div className="w-20 h-20 rounded-full bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mx-auto">
-              <svg className="w-8 h-8 text-purple-400/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-20 h-20 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mx-auto">
+              <svg className="w-8 h-8 text-amber-400/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
             </div>
@@ -142,7 +142,7 @@ function RentalCard({ rental, active }: { rental: RentalItem; active: boolean })
 
   return (
     <Link href={`/chat/${rental.id}`}>
-      <div className={`glass rounded-2xl p-5 flex items-center gap-5 group transition-all hover:border-purple-500/20 ${active ? "" : "opacity-60"}`}>
+      <div className={`glass rounded-2xl p-5 flex items-center gap-5 group transition-all hover:border-amber-500/20 ${active ? "" : "opacity-60"}`}>
         {/* Avatar */}
         <div className="relative w-16 h-16 rounded-xl overflow-hidden flex-shrink-0">
           {rental.companion.avatarMain ? (
@@ -153,12 +153,12 @@ function RentalCard({ rental, active }: { rental: RentalItem; active: boolean })
               className="object-cover group-hover:scale-110 transition-transform duration-500"
             />
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center">
+            <div className="w-full h-full bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center">
               <span className="text-xl font-bold text-white">{rental.companion.name.charAt(0)}</span>
             </div>
           )}
           {active && (
-            <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-green-400 border-2 border-[#0a0010]" />
+            <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-green-400 border-2 border-[#0B0E11]" />
           )}
         </div>
 
@@ -175,7 +175,7 @@ function RentalCard({ rental, active }: { rental: RentalItem; active: boolean })
             {active && (
               <>
                 <span className="text-xs text-gray-600">•</span>
-                <span className="text-xs text-purple-400">{timeLeft}</span>
+                <span className="text-xs text-amber-400">{timeLeft}</span>
               </>
             )}
           </div>
@@ -184,7 +184,7 @@ function RentalCard({ rental, active }: { rental: RentalItem; active: boolean })
         {/* Action */}
         <div className="flex-shrink-0">
           {active ? (
-            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg shadow-purple-500/20">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-yellow-500 to-amber-500 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg shadow-amber-500/20">
               <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>

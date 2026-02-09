@@ -30,24 +30,24 @@ export default function ProfileHeader({
             className="object-cover blur-3xl opacity-20 scale-110"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 via-[#0a0010]/60 to-[#0a0010]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-amber-900/20 via-[#0B0E11]/60 to-[#0B0E11]" />
       </div>
 
       <div className="relative pt-8 flex flex-col md:flex-row items-center md:items-end gap-8">
         {/* Avatar */}
         <div className="relative w-52 h-52 md:w-72 md:h-72 rounded-2xl overflow-hidden flex-shrink-0 group">
-          <div className="absolute -inset-[1px] bg-gradient-to-br from-pink-500/50 via-purple-500/50 to-indigo-500/50 rounded-2xl" />
+          <div className="absolute -inset-[1px] bg-gradient-to-br from-yellow-500/50 via-amber-500/50 to-orange-500/50 rounded-2xl" />
           <div className="absolute inset-[2px] rounded-2xl overflow-hidden">
             {avatarMain ? (
               <Image src={avatarMain} alt={name} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
             ) : (
-              <div className="w-full h-full bg-gradient-to-br from-pink-600 to-purple-600 flex items-center justify-center">
+              <div className="w-full h-full bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center">
                 <span className="text-6xl font-bold text-white">{name.charAt(0)}</span>
               </div>
             )}
           </div>
           {/* Shadow glow */}
-          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-3/4 h-8 bg-purple-500/20 blur-xl rounded-full" />
+          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-3/4 h-8 bg-amber-500/20 blur-xl rounded-full" />
         </div>
 
         {/* Info */}

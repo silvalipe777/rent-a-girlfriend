@@ -8,7 +8,7 @@ export async function POST(req: Request) {
   try {
     const session = await getServerSession(authOptions);
     if (!session?.user) {
-      return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const { companionId, plan } = await req.json();
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
     });
 
     if (!companion || !companion.available) {
-      return NextResponse.json({ error: "Companion não disponível" }, { status: 404 });
+      return NextResponse.json({ error: "Companion not available" }, { status: 404 });
     }
 
     const priceMap: Record<string, number> = {
@@ -40,7 +40,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(rental, { status: 201 });
   } catch {
-    return NextResponse.json({ error: "Erro ao criar aluguel" }, { status: 500 });
+    return NextResponse.json({ error: "Error creating rental" }, { status: 500 });
   }
 }
 
@@ -48,7 +48,7 @@ export async function GET(req: Request) {
   try {
     const session = await getServerSession(authOptions);
     if (!session?.user) {
-      return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const userId = (session.user as { id: string }).id;
@@ -70,6 +70,6 @@ export async function GET(req: Request) {
 
     return NextResponse.json(rentals);
   } catch {
-    return NextResponse.json({ error: "Erro interno" }, { status: 500 });
+    return NextResponse.json({ error: "Internal error" }, { status: 500 });
   }
 }

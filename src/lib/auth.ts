@@ -10,6 +10,36 @@ export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   session: { strategy: "jwt" },
   providers: [
+    // Guest login provider (for testing)
+    CredentialsProvider({
+      id: "guest",
+      name: "guest",
+      credentials: {},
+      async authorize() {
+        const guestEmail = "guest@cryptogirls.app";
+
+        let user = await prisma.user.findUnique({
+          where: { email: guestEmail },
+        });
+
+        if (!user) {
+          user = await prisma.user.create({
+            data: {
+              email: guestEmail,
+              name: "Guest User",
+            },
+          });
+        }
+
+        return {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          walletAddress: user.walletAddress,
+        };
+      },
+    }),
+
     // Email/Password provider
     CredentialsProvider({
       id: "credentials",
@@ -66,8 +96,8 @@ export const authOptions: NextAuthOptions = {
           const nonceValid = consumeNonce(siweMessage.nonce);
           if (!nonceValid) return null;
 
-          // Verify chain is Polygon
-          if (siweMessage.chainId !== 137) return null;
+          // Verify chain is BSC
+          if (siweMessage.chainId !== 56) return null;
 
           const walletAddress = siweMessage.address.toLowerCase();
 

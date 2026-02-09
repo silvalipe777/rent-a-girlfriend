@@ -22,7 +22,7 @@ export function useChat(rentalId: string) {
           const err = await response.json();
           setMessages((prev) => [
             ...prev,
-            { role: "assistant", content: `Erro: ${err.error || "Falha na conexao"}` },
+            { role: "assistant", content: `Error: ${err.error || "Connection failed"}` },
           ]);
           setIsLoading(false);
           return;
@@ -50,7 +50,7 @@ export function useChat(rentalId: string) {
       } catch {
         setMessages((prev) => [
           ...prev,
-          { role: "assistant", content: "Erro de conexao. Tente novamente." },
+          { role: "assistant", content: "Connection error. Please try again." },
         ]);
       }
 

@@ -6,9 +6,9 @@ import Providers from "./providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Rent a Girlfriend - Virtual AI Companions",
+  title: "Crypto Girls - AI Crypto Companions on BSC",
   description:
-    "Encontre sua companheira AI perfeita. Marketplace de AI Girlfriends virtuais para companhia, conversa e conexão emocional.",
+    "Find your perfect AI crypto companion. Each girl specializes in a different area of crypto — DeFi, NFTs, trading, airdrops, and more.",
 };
 
 export default function RootLayout({
@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="en">
       <body className={`${inter.className} antialiased bg-gray-950 text-white`}>
         <Providers>
           {children}

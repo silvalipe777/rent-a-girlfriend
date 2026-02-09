@@ -17,7 +17,7 @@ export default function Avatar({ src, alt, size = "md", className }: AvatarProps
   };
 
   return (
-    <div className={cn("relative rounded-full overflow-hidden bg-gradient-to-br from-pink-600 to-purple-600", sizes[size], className)}>
+    <div className={cn("relative rounded-full overflow-hidden bg-gradient-to-br from-yellow-500 to-amber-600", sizes[size], className)}>
       {src ? (
         <Image src={src} alt={alt} fill className="object-cover" />
       ) : (

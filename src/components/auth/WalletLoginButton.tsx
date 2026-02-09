@@ -48,10 +48,10 @@ export default function WalletLoginButton() {
       const message = new SiweMessage({
         domain: window.location.host,
         address: walletAddress,
-        statement: "Sign in to Rent a Girlfriend with your Ethereum wallet.",
+        statement: "Sign in to Crypto Girls with your wallet.",
         uri: window.location.origin,
         version: "1",
-        chainId: 137,
+        chainId: 56,
         nonce,
       });
 
@@ -113,7 +113,7 @@ export default function WalletLoginButton() {
         {loading ? "Connecting..." : "Connect MetaMask"}
       </Button>
       <p className="text-[10px] text-gray-600 text-center">
-        Polygon Network (MATIC)
+        BSC Network (BNB)
       </p>
     </div>
   );

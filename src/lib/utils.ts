@@ -1,8 +1,6 @@
 export function formatCurrency(value: number): string {
-  return new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  }).format(value);
+  if (value === 0) return "Free";
+  return `${value} BNB`;
 }
 
 export function formatDate(date: Date): string {
@@ -37,15 +35,15 @@ export function isRentalActive(expiresAt: Date): boolean {
 export function getTimeRemaining(expiresAt: Date): string {
   const now = new Date();
   const diff = new Date(expiresAt).getTime() - now.getTime();
-  if (diff <= 0) return "Expirado";
+  if (diff <= 0) return "Expired";
 
   const hours = Math.floor(diff / (1000 * 60 * 60));
   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 
   if (hours > 24) {
     const days = Math.floor(hours / 24);
-    return `${days}d ${hours % 24}h restantes`;
+    return `${days}d ${hours % 24}h remaining`;
   }
-  if (hours > 0) return `${hours}h ${minutes}m restantes`;
-  return `${minutes}m restantes`;
+  if (hours > 0) return `${hours}h ${minutes}m remaining`;
+  return `${minutes}m remaining`;
 }

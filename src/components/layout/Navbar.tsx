@@ -12,11 +12,11 @@ export default function Navbar() {
     <nav className="sticky top-0 z-40 glass">
       <Container className="flex items-center justify-between h-16">
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:shadow-purple-500/40 transition-shadow">
-            <span className="text-white text-sm font-bold">R</span>
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:shadow-amber-500/40 transition-shadow">
+            <span className="text-white text-sm font-bold">CG</span>
           </div>
           <span className="font-bold text-lg gradient-text hidden sm:block">
-            RentAGirlfriend
+            CryptoGirls
           </span>
         </Link>
 
@@ -38,7 +38,7 @@ export default function Navbar() {
           {session ? (
             <>
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">
-                <div className="w-6 h-6 rounded-full bg-gradient-to-r from-pink-500 to-purple-500" />
+                <div className="w-6 h-6 rounded-full bg-gradient-to-r from-yellow-500 to-amber-500" />
                 <span className="text-xs text-gray-300 hidden sm:block">
                   {session.user?.name || session.user?.email}
                 </span>
@@ -51,14 +51,9 @@ export default function Navbar() {
               </Button>
             </>
           ) : (
-            <>
-              <Link href="/login">
-                <Button variant="ghost" size="sm">Login</Button>
-              </Link>
-              <Link href="/register">
-                <Button variant="primary" size="sm">Sign Up</Button>
-              </Link>
-            </>
+            <Link href="/login">
+              <Button variant="primary" size="sm">Connect Wallet</Button>
+            </Link>
           )}
         </div>
       </Container>

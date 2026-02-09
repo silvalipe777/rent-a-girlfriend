@@ -5,8 +5,8 @@ export default function CompanionGrid({ companions }: { companions: AICompanionR
   if (companions.length === 0) {
     return (
       <div className="text-center py-20 space-y-4">
-        <div className="w-16 h-16 rounded-full bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mx-auto">
-          <svg className="w-7 h-7 text-purple-400/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="w-16 h-16 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mx-auto">
+          <svg className="w-7 h-7 text-amber-400/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
         </div>

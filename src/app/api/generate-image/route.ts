@@ -11,7 +11,7 @@ export async function POST(req: Request) {
     });
 
     if (!companion) {
-      return NextResponse.json({ error: "Companion não encontrado" }, { status: 404 });
+      return NextResponse.json({ error: "Companion not found" }, { status: 404 });
     }
 
     const imagePath = await generateAvatar({
@@ -29,7 +29,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ path: imagePath });
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Erro ao gerar imagem";
+    const message = error instanceof Error ? error.message : "Error generating image";
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }

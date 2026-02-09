@@ -1,26 +1,28 @@
 export const EMOTIONAL_STYLES = [
-  "Doce e empática",
-  "Misteriosa e intensa",
-  "Divertida e brincalhona",
-  "Madura e conselheira",
-  "Tímida e adorável",
-  "Confiante e sedutora",
-  "Intelectual e filosófica",
-  "Aventureira e espontânea",
+  "Flirty & Knowledgeable",
+  "Bold & Seductive",
+  "Creative & Irresistible",
+  "Wild & Playful",
+  "Intense & Magnetic",
+  "Sweet & Tempting",
+  "Brainy & Sultry",
+  "Dominant & Alluring",
+  "Warm & Sensual",
+  "Mysterious & Dark",
 ] as const;
 
 export const CATEGORIES = [
-  { value: "girlfriend", label: "Namorada" },
-  { value: "boyfriend", label: "Namorado" },
-  { value: "friend", label: "Amigo(a)" },
-  { value: "mentor", label: "Mentor(a)" },
+  { value: "assistant", label: "Assistant" },
+  { value: "boyfriend", label: "Boyfriend" },
+  { value: "friend", label: "Friend" },
+  { value: "mentor", label: "Mentor" },
 ] as const;
 
 export const PRICING_PLANS = [
-  { key: "hourly", label: "Por Hora", duration: 1 },
-  { key: "daily", label: "Por Dia", duration: 24 },
-  { key: "weekly", label: "Por Semana", duration: 168 },
+  { key: "hourly", label: "Per Hour", duration: 1 },
+  { key: "daily", label: "Per Day", duration: 24 },
+  { key: "weekly", label: "Per Week", duration: 168 },
 ] as const;
 
-export const APP_NAME = "Rent a Girlfriend";
-export const APP_DESCRIPTION = "Virtual AI Companions Marketplace - Encontre sua companheira AI perfeita";
+export const APP_NAME = "Crypto Girls";
+export const APP_DESCRIPTION = "Sexy AI Crypto Assistants on BSC — Your hottest crypto companions";

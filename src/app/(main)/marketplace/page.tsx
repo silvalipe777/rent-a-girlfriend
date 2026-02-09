@@ -40,13 +40,13 @@ export default async function MarketplacePage({ searchParams }: Props) {
   return (
     <div className="relative py-12">
       {/* Background orbs */}
-      <div className="absolute top-0 right-[20%] w-80 h-80 bg-purple-600/10 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 left-[10%] w-64 h-64 bg-pink-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 right-[20%] w-80 h-80 bg-amber-600/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 left-[10%] w-64 h-64 bg-yellow-500/10 rounded-full blur-[120px] pointer-events-none" />
 
       <Container className="relative">
         {/* Header */}
         <div className="mb-10">
-          <span className="text-xs uppercase tracking-widest text-purple-400 font-semibold">Explore</span>
+          <span className="text-xs uppercase tracking-widest text-amber-400 font-semibold">Explore</span>
           <h1 className="text-5xl font-black mt-2">
             <span className="gradient-text">Marketplace</span>
           </h1>
@@ -65,7 +65,7 @@ export default async function MarketplacePage({ searchParams }: Props) {
         {/* Results count */}
         <div className="flex items-center justify-between mb-6">
           <p className="text-sm text-gray-500">
-            <span className="text-purple-400 font-semibold">{companions.length}</span> companions found
+            <span className="text-amber-400 font-semibold">{companions.length}</span> companions found
           </p>
         </div>
 

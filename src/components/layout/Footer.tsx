@@ -6,21 +6,21 @@ export default function Footer() {
       <Container>
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center">
-              <span className="text-white text-sm font-bold">R</span>
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center">
+              <span className="text-white text-sm font-bold">CG</span>
             </div>
-            <span className="font-bold gradient-text">RentAGirlfriend</span>
+            <span className="font-bold gradient-text">CryptoGirls</span>
           </div>
 
           <div className="text-center">
             <p className="text-gray-600 text-[10px]">
-              &copy; 2026 Rent a Girlfriend - Virtual AI Companions
+              &copy; 2026 Crypto Girls - AI Crypto Companions on BSC
             </p>
           </div>
 
           <div className="flex gap-4">
-            <span className="text-gray-600 hover:text-purple-400 transition-colors text-xs cursor-pointer">Terms</span>
-            <span className="text-gray-600 hover:text-purple-400 transition-colors text-xs cursor-pointer">Privacy</span>
+            <span className="text-gray-600 hover:text-amber-400 transition-colors text-xs cursor-pointer">Terms</span>
+            <span className="text-gray-600 hover:text-amber-400 transition-colors text-xs cursor-pointer">Privacy</span>
           </div>
         </div>
       </Container>

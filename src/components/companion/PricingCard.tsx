@@ -60,8 +60,8 @@ export default function PricingCard({
   return (
     <div className="glass rounded-2xl p-6 space-y-6">
       <div className="space-y-1">
-        <span className="text-xs uppercase tracking-widest text-purple-400 font-semibold">Plans</span>
-        <h2 className="text-xl font-bold text-white">Rent {companionName}</h2>
+        <span className="text-xs uppercase tracking-widest text-amber-400 font-semibold">Plans</span>
+        <h2 className="text-xl font-bold text-white">Unlock {companionName}</h2>
       </div>
 
       <div className="space-y-3">
@@ -72,8 +72,8 @@ export default function PricingCard({
             className={cn(
               "w-full flex items-center justify-between p-4 rounded-xl border transition-all",
               selectedPlan === plan.key
-                ? "border-purple-500/40 bg-purple-500/10 shadow-lg shadow-purple-500/5"
-                : "border-purple-500/10 hover:border-purple-500/20 bg-white/[0.02]"
+                ? "border-amber-500/40 bg-amber-500/10 shadow-lg shadow-amber-500/5"
+                : "border-amber-500/10 hover:border-amber-500/20 bg-white/[0.02]"
             )}
           >
             <div className="flex items-center gap-3">
@@ -81,13 +81,13 @@ export default function PricingCard({
                 className={cn(
                   "w-4 h-4 rounded-full border-2 transition-all",
                   selectedPlan === plan.key
-                    ? "border-purple-500 bg-gradient-to-r from-pink-500 to-purple-500"
+                    ? "border-amber-500 bg-gradient-to-r from-yellow-500 to-amber-500"
                     : "border-gray-600"
                 )}
               />
               <span className="font-medium text-white">{plan.label}</span>
               {plan.popular && (
-                <span className="text-[10px] bg-gradient-to-r from-pink-500/20 to-purple-500/20 text-purple-300 px-2 py-0.5 rounded-full border border-purple-500/20">
+                <span className="text-[10px] bg-gradient-to-r from-yellow-500/20 to-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full border border-amber-500/20">
                   Popular
                 </span>
               )}
@@ -100,7 +100,7 @@ export default function PricingCard({
       </div>
 
       <Button className="w-full neon-pulse" size="lg" onClick={handleRent} disabled={loading}>
-        {loading ? "Processing..." : "Rent Now"}
+        {loading ? "Processing..." : "Unlock Now"}
       </Button>
 
       <p className="text-[10px] text-gray-600 text-center leading-relaxed">

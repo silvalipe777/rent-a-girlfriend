@@ -33,7 +33,7 @@ export async function generateAvatar(
   });
 
   const base64Data = response.data?.[0]?.b64_json;
-  if (!base64Data) throw new Error("Falha ao gerar imagem: resposta vazia");
+  if (!base64Data) throw new Error("Failed to generate image: empty response");
   const buffer = Buffer.from(base64Data, "base64");
 
   const fileName =

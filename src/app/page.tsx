@@ -19,9 +19,9 @@ export default async function HomePage() {
       {/* Hero */}
       <section className="relative py-32 md:py-44 overflow-hidden">
         {/* Animated orbs */}
-        <div className="absolute top-20 left-[10%] w-72 h-72 bg-pink-500/20 rounded-full blur-[120px] float" />
-        <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-purple-600/15 rounded-full blur-[150px] float" style={{ animationDelay: "2s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[180px]" />
+        <div className="absolute top-20 left-[10%] w-72 h-72 bg-yellow-500/20 rounded-full blur-[120px] float" />
+        <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-amber-600/15 rounded-full blur-[150px] float" style={{ animationDelay: "2s" }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-[180px]" />
 
         {/* Grid pattern */}
         <div className="absolute inset-0 opacity-[0.03]" style={{
@@ -33,31 +33,30 @@ export default async function HomePage() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
             <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            <span className="text-xs text-gray-300">10 AI Companions online now</span>
+            <span className="text-xs text-gray-300">10 Sexy AI Assistants online now</span>
           </div>
 
           <h1 className="text-6xl md:text-8xl font-black leading-[0.9] tracking-tight">
-            <span className="text-white">Your</span>
+            <span className="text-white">Your Sexy</span>
             <br />
-            <span className="gradient-text">AI Girlfriend</span>
+            <span className="gradient-text">Crypto Assistant</span>
             <br />
             <span className="text-white">Awaits You</span>
           </h1>
 
           <p className="text-lg md:text-xl text-gray-400/80 max-w-xl mx-auto leading-relaxed">
-            Virtual companions with unique personalities.
-            Rent, chat and connect emotionally.
+            Gorgeous AI assistants specialized in crypto. Each girl masters a different area — DeFi, NFTs, trading, airdrops and more. Irresistible and powered by BSC.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
             <Link href="/marketplace">
               <Button size="lg" className="neon-pulse">
-                Explore Companions
+                Explore Girls
               </Button>
             </Link>
-            <Link href="/register">
+            <Link href="/login">
               <Button variant="secondary" size="lg">
-                Create Free Account
+                Connect Wallet
               </Button>
             </Link>
           </div>
@@ -65,7 +64,7 @@ export default async function HomePage() {
           {/* Stats */}
           <div className="flex justify-center gap-12 pt-8">
             {[
-              { value: "10+", label: "AI Girlfriends" },
+              { value: "10+", label: "Crypto Girls" },
               { value: "24/7", label: "Available" },
               { value: "100%", label: "Personalized" },
             ].map((stat) => (
@@ -82,7 +81,7 @@ export default async function HomePage() {
       <section className="relative py-24">
         <Container>
           <div className="text-center mb-16">
-            <span className="text-xs uppercase tracking-widest text-purple-400 font-semibold">How it works</span>
+            <span className="text-xs uppercase tracking-widest text-amber-400 font-semibold">How it works</span>
             <h2 className="text-4xl md:text-5xl font-bold mt-4">
               Simple as <span className="gradient-text">1, 2, 3</span>
             </h2>
@@ -97,8 +96,8 @@ export default async function HomePage() {
                   </svg>
                 ),
                 title: "Explore",
-                desc: "Browse the marketplace and find the perfect AI companion for your style",
-                color: "from-pink-500 to-rose-500",
+                desc: "Browse our stunning crypto assistants and find your perfect match",
+                color: "from-yellow-500 to-amber-500",
               },
               {
                 icon: (
@@ -107,8 +106,8 @@ export default async function HomePage() {
                   </svg>
                 ),
                 title: "Rent",
-                desc: "Choose an hourly, daily or weekly plan and unlock your companion",
-                color: "from-purple-500 to-violet-500",
+                desc: "Choose your plan and unlock private time with your assistant",
+                color: "from-amber-500 to-orange-500",
               },
               {
                 icon: (
@@ -117,13 +116,13 @@ export default async function HomePage() {
                   </svg>
                 ),
                 title: "Chat",
-                desc: "Real-time conversations with personality, emotion and true connection",
-                color: "from-indigo-500 to-blue-500",
+                desc: "Intimate real-time conversations with personality, charm and crypto expertise",
+                color: "from-orange-500 to-red-500",
               },
             ].map((item, i) => (
               <div
                 key={i}
-                className="group relative p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-purple-500/20 transition-all duration-500 hover:bg-white/[0.04]"
+                className="group relative p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-amber-500/20 transition-all duration-500 hover:bg-white/[0.04]"
               >
                 <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center text-white mb-6 shadow-lg group-hover:scale-110 transition-transform`}>
                   {item.icon}
@@ -142,9 +141,9 @@ export default async function HomePage() {
           <Container>
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-12">
               <div>
-                <span className="text-xs uppercase tracking-widest text-purple-400 font-semibold">Top picks</span>
+                <span className="text-xs uppercase tracking-widest text-amber-400 font-semibold">Top picks</span>
                 <h2 className="text-4xl font-bold mt-2">
-                  Featured <span className="gradient-text">Companions</span>
+                  Featured <span className="gradient-text">Girls</span>
                 </h2>
               </div>
               <Link href="/marketplace">
@@ -165,18 +164,18 @@ export default async function HomePage() {
         <Container>
           <div className="relative rounded-[2rem] overflow-hidden p-12 md:p-20 text-center">
             {/* BG */}
-            <div className="absolute inset-0 bg-gradient-to-br from-pink-600/20 via-purple-600/20 to-indigo-600/20" />
-            <div className="absolute inset-0 bg-[#0a0010]/60 backdrop-blur-sm" />
-            <div className="absolute inset-[1px] rounded-[2rem] border border-purple-500/20" />
+            <div className="absolute inset-0 bg-gradient-to-br from-yellow-600/20 via-amber-600/20 to-orange-600/20" />
+            <div className="absolute inset-0 bg-[#0B0E11]/60 backdrop-blur-sm" />
+            <div className="absolute inset-[1px] rounded-[2rem] border border-amber-500/20" />
 
             <div className="relative space-y-8">
               <h2 className="text-4xl md:text-5xl font-bold">
                 Ready to <span className="gradient-text">chat?</span>
               </h2>
               <p className="text-gray-400 max-w-lg mx-auto">
-                Create your free account and start interacting with our AI Companions right now.
+                Connect your wallet and start chatting with our gorgeous AI assistants right now.
               </p>
-              <Link href="/register">
+              <Link href="/login">
                 <Button size="lg" className="neon-pulse">
                   Start Now
                 </Button>

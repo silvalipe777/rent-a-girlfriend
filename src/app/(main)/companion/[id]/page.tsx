@@ -27,9 +27,9 @@ export default async function CompanionPage({ params }: Props) {
   return (
     <div className="relative py-12">
       {/* Background orbs */}
-      <div className="absolute top-0 left-[15%] w-96 h-96 bg-pink-500/10 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute top-[40%] right-[10%] w-72 h-72 bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-[30%] w-64 h-64 bg-indigo-500/8 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-0 left-[15%] w-96 h-96 bg-yellow-500/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-[40%] right-[10%] w-72 h-72 bg-amber-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-[30%] w-64 h-64 bg-orange-500/8 rounded-full blur-[130px] pointer-events-none" />
 
       <Container className="relative">
         <ProfileHeader
