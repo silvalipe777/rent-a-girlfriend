@@ -25,4 +25,4 @@ export const PRICING_PLANS = [
 ] as const;
 
 export const APP_NAME = "Crypto Girls";
-export const APP_DESCRIPTION = "Sexy AI Crypto Assistants on BSC — Your hottest crypto companions";
+export const APP_DESCRIPTION = "AI Crypto Assistants on BSC — Your smartest crypto companions";

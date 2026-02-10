@@ -33,11 +33,11 @@ export default async function HomePage() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
             <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            <span className="text-xs text-gray-300">10 Sexy AI Assistants online now</span>
+            <span className="text-xs text-gray-300">10 AI Assistants online now</span>
           </div>
 
           <h1 className="text-6xl md:text-8xl font-black leading-[0.9] tracking-tight">
-            <span className="text-white">Your Sexy</span>
+            <span className="text-white">Your</span>
             <br />
             <span className="gradient-text">Crypto Assistant</span>
             <br />

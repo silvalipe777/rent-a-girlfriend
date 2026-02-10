@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useAccount, useConnect, useSignMessage } from "wagmi";
+import { useAccount, useConnect, useSignMessage, useSwitchChain, useChainId } from "wagmi";
 import { SiweMessage } from "siwe";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -9,7 +9,9 @@ import Button from "../ui/Button";
 export default function WalletLoginButton() {
   const router = useRouter();
   const { address, isConnected } = useAccount();
+  const chainId = useChainId();
   const { connectAsync, connectors } = useConnect();
+  const { switchChainAsync } = useSwitchChain();
   const { signMessageAsync } = useSignMessage();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -38,6 +40,11 @@ export default function WalletLoginButton() {
         setError("Could not get wallet address.");
         setLoading(false);
         return;
+      }
+
+      // Step 1.5: Switch to BSC if needed
+      if (chainId !== 56) {
+        await switchChainAsync({ chainId: 56 });
       }
 
       // Step 2: Get nonce from server
