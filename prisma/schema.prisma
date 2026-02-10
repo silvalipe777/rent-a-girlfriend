@@ -97,6 +97,8 @@ model Rental {
   status       String   @default("active")
   plan         String
   priceCharged Float
+  txHash       String?  @unique
+  payerWallet  String?
   startedAt    DateTime @default(now())
   expiresAt    DateTime
   createdAt    DateTime @default(now())

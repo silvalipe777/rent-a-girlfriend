@@ -1,8 +1,11 @@
 "use client";
 import { useState } from "react";
+import { useAccount, useConnect, useWriteContract } from "wagmi";
+import { parseEther } from "viem";
 import Button from "../ui/Button";
 import { formatCurrency } from "@/lib/utils";
 import { cn } from "@/lib/utils";
+import { PAYMENT_CONTRACT_ADDRESS, PAYMENT_CONTRACT_ABI } from "@/lib/contract";
 
 interface PricingCardProps {
   companionId: string;
@@ -27,33 +30,101 @@ export default function PricingCard({
 }: PricingCardProps) {
   const [selectedPlan, setSelectedPlan] = useState("daily");
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
 
   const prices = { pricePerHour, pricePerDay, pricePerWeek };
+  const { isConnected } = useAccount();
+  const { connectAsync, connectors } = useConnect();
+  const { writeContractAsync } = useWriteContract();
+
+  const selectedPrice = prices[plans.find((p) => p.key === selectedPlan)!.field];
+  const isFree = selectedPrice === 0;
+
+  const createRental = async (txHash?: string) => {
+    const res = await fetch("/api/rentals", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ companionId, plan: selectedPlan, txHash }),
+    });
+
+    if (res.status === 401) {
+      window.location.href = "/login";
+      return;
+    }
+
+    const data = await res.json();
+    if (res.ok) {
+      window.location.href = `/chat/${data.id}`;
+    } else {
+      alert(data.error || "Rental error");
+    }
+  };
 
   const handleRent = async () => {
     setLoading(true);
-    try {
-      const res = await fetch("/api/rentals", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ companionId, plan: selectedPlan }),
-      });
+    setStatus("");
 
-      if (res.status === 401) {
-        window.location.href = "/login";
+    try {
+      // FREE — no payment needed
+      if (isFree) {
+        await createRental();
         return;
       }
 
-      const data = await res.json();
-      if (res.ok) {
-        window.location.href = `/chat/${data.id}`;
-      } else {
-        alert(data.error || "Rental error");
+      // PAID — need wallet
+      if (!isConnected) {
+        const metaMaskConnector = connectors.find(
+          (c) => c.id === "injected" || c.name === "MetaMask"
+        );
+        if (!metaMaskConnector) {
+          alert("MetaMask not found. Please install MetaMask.");
+          return;
+        }
+        await connectAsync({ connector: metaMaskConnector });
       }
-    } catch {
-      alert("Connection error");
+
+      // Send BNB to contract
+      setStatus("Confirm in MetaMask...");
+      const hash = await writeContractAsync({
+        address: PAYMENT_CONTRACT_ADDRESS,
+        abi: PAYMENT_CONTRACT_ABI,
+        functionName: "pay",
+        args: [companionId, selectedPlan],
+        value: parseEther(selectedPrice.toString()),
+      });
+
+      // Wait for on-chain confirmation
+      setStatus("Waiting for confirmation...");
+      const { createPublicClient, http } = await import("viem");
+      const { bsc } = await import("viem/chains");
+      const client = createPublicClient({
+        chain: bsc,
+        transport: http(
+          process.env.NEXT_PUBLIC_BSC_RPC_URL || "https://bsc-dataseed.binance.org"
+        ),
+      });
+      const receipt = await client.waitForTransactionReceipt({ hash });
+
+      if (receipt.status !== "success") {
+        alert("Transaction failed on-chain.");
+        return;
+      }
+
+      // Create rental with verified txHash
+      setStatus("Activating...");
+      await createRental(hash);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "";
+      if (msg.includes("User rejected") || msg.includes("rejected")) {
+        setStatus("");
+      } else if (msg) {
+        alert("Payment error: " + msg.slice(0, 100));
+      } else {
+        alert("Connection error");
+      }
     } finally {
       setLoading(false);
+      setStatus("");
     }
   };
 
@@ -99,13 +170,22 @@ export default function PricingCard({
         ))}
       </div>
 
+      {status && (
+        <div className="text-center text-sm text-amber-300 animate-pulse">{status}</div>
+      )}
+
       <Button className="w-full neon-pulse" size="lg" onClick={handleRent} disabled={loading}>
-        {loading ? "Processing..." : "Unlock Now"}
+        {loading
+          ? status || "Processing..."
+          : isFree
+            ? "Unlock Now"
+            : `Pay ${formatCurrency(selectedPrice)}`}
       </Button>
 
       <p className="text-[10px] text-gray-600 text-center leading-relaxed">
-        By renting, you agree to our terms of use.
-        100% fictional AI-generated character.
+        {isFree
+          ? "Free — no payment required."
+          : "Payment via BSC. Verified on-chain."}
       </p>
     </div>
   );
