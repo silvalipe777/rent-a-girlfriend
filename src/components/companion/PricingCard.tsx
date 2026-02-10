@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useAccount, useConnect, useWriteContract, useSwitchChain, useChainId } from "wagmi";
+import { useAccount, useConnect, useWriteContract, useSwitchChain } from "wagmi";
 import { parseEther } from "viem";
 import Button from "../ui/Button";
 import { formatCurrency } from "@/lib/utils";
@@ -34,7 +34,6 @@ export default function PricingCard({
 
   const prices = { pricePerHour, pricePerDay, pricePerWeek };
   const { isConnected } = useAccount();
-  const chainId = useChainId();
   const { connectAsync, connectors } = useConnect();
   const { switchChainAsync } = useSwitchChain();
   const { writeContractAsync } = useWriteContract();
@@ -85,11 +84,9 @@ export default function PricingCard({
         await connectAsync({ connector: metaMaskConnector });
       }
 
-      // Ensure we're on BSC
-      if (chainId !== 56) {
-        setStatus("Switching to BSC...");
-        await switchChainAsync({ chainId: 56 });
-      }
+      // Always switch to BSC (MetaMask may be on Ethereum)
+      setStatus("Switching to BSC...");
+      await switchChainAsync({ chainId: 56 });
 
       // Send BNB to contract
       setStatus("Confirm in MetaMask...");

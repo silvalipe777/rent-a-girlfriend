@@ -1,13 +1,13 @@
 export const EMOTIONAL_STYLES = [
-  "Flirty & Knowledgeable",
-  "Bold & Seductive",
-  "Creative & Irresistible",
+  "Friendly & Knowledgeable",
+  "Bold & Confident",
+  "Creative & Inspiring",
   "Wild & Playful",
   "Intense & Magnetic",
-  "Sweet & Tempting",
-  "Brainy & Sultry",
-  "Dominant & Alluring",
-  "Warm & Sensual",
+  "Sweet & Helpful",
+  "Brainy & Witty",
+  "Confident & Strategic",
+  "Warm & Supportive",
   "Mysterious & Dark",
 ] as const;
 

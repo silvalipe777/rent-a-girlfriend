@@ -45,7 +45,7 @@ export default async function HomePage() {
           </h1>
 
           <p className="text-lg md:text-xl text-gray-400/80 max-w-xl mx-auto leading-relaxed">
-            Gorgeous AI assistants specialized in crypto. Each girl masters a different area — DeFi, NFTs, trading, airdrops and more. Irresistible and powered by BSC.
+            AI assistants specialized in crypto. Each one masters a different area — DeFi, NFTs, trading, airdrops and more. Powered by BSC.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
@@ -173,7 +173,7 @@ export default async function HomePage() {
                 Ready to <span className="gradient-text">chat?</span>
               </h2>
               <p className="text-gray-400 max-w-lg mx-auto">
-                Connect your wallet and start chatting with our gorgeous AI assistants right now.
+                Connect your wallet and start chatting with our AI assistants right now.
               </p>
               <Link href="/login">
                 <Button size="lg" className="neon-pulse">

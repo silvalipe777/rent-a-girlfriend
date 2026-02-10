@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useAccount, useConnect, useSignMessage, useSwitchChain, useChainId } from "wagmi";
+import { useAccount, useConnect, useSignMessage, useSwitchChain } from "wagmi";
 import { SiweMessage } from "siwe";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -9,7 +9,6 @@ import Button from "../ui/Button";
 export default function WalletLoginButton() {
   const router = useRouter();
   const { address, isConnected } = useAccount();
-  const chainId = useChainId();
   const { connectAsync, connectors } = useConnect();
   const { switchChainAsync } = useSwitchChain();
   const { signMessageAsync } = useSignMessage();
@@ -42,10 +41,8 @@ export default function WalletLoginButton() {
         return;
       }
 
-      // Step 1.5: Switch to BSC if needed
-      if (chainId !== 56) {
-        await switchChainAsync({ chainId: 56 });
-      }
+      // Always switch to BSC (MetaMask may be on Ethereum)
+      await switchChainAsync({ chainId: 56 });
 
       // Step 2: Get nonce from server
       const nonceRes = await fetch("/api/auth/siwe");
