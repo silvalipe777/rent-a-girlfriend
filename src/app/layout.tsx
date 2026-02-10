@@ -6,9 +6,9 @@ import Providers from "./providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Crypto Girls - AI Crypto Companions on BSC",
+  title: "AVA - Autonomous Virtual Agents on BSC",
   description:
-    "Find your perfect AI crypto companion. Each girl specializes in a different area of crypto — DeFi, NFTs, trading, airdrops, and more.",
+    "Autonomous Virtual Agents specialized in crypto. Each agent masters a different area — DeFi, NFTs, trading, airdrops, and more.",
 };
 
 export default function RootLayout({

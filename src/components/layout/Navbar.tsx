@@ -13,10 +13,10 @@ export default function Navbar() {
       <Container className="flex items-center justify-between h-16">
         <Link href="/" className="flex items-center gap-3 group">
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:shadow-amber-500/40 transition-shadow">
-            <span className="text-white text-sm font-bold">CG</span>
+            <span className="text-white text-sm font-bold">AVA</span>
           </div>
           <span className="font-bold text-lg gradient-text hidden sm:block">
-            CryptoGirls
+            AVA
           </span>
         </Link>
 

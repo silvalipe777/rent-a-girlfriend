@@ -52,7 +52,7 @@ export default function WalletLoginButton() {
       const message = new SiweMessage({
         domain: window.location.host,
         address: walletAddress,
-        statement: "Sign in to Crypto Girls with your wallet.",
+        statement: "Sign in to AVA with your wallet.",
         uri: window.location.origin,
         version: "1",
         chainId: 56,

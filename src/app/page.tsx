@@ -51,7 +51,7 @@ export default async function HomePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
             <Link href="/marketplace">
               <Button size="lg" className="neon-pulse">
-                Explore Girls
+                Explore Agents
               </Button>
             </Link>
             <Link href="/login">
@@ -64,7 +64,7 @@ export default async function HomePage() {
           {/* Stats */}
           <div className="flex justify-center gap-12 pt-8">
             {[
-              { value: "10+", label: "Crypto Girls" },
+              { value: "10+", label: "Virtual Agents" },
               { value: "24/7", label: "Available" },
               { value: "100%", label: "Personalized" },
             ].map((stat) => (
@@ -143,7 +143,7 @@ export default async function HomePage() {
               <div>
                 <span className="text-xs uppercase tracking-widest text-amber-400 font-semibold">Top picks</span>
                 <h2 className="text-4xl font-bold mt-2">
-                  Featured <span className="gradient-text">Girls</span>
+                  Featured <span className="gradient-text">Agents</span>
                 </h2>
               </div>
               <Link href="/marketplace">

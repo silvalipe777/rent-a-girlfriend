@@ -24,5 +24,5 @@ export const PRICING_PLANS = [
   { key: "weekly", label: "Per Week", duration: 168 },
 ] as const;
 
-export const APP_NAME = "Crypto Girls";
-export const APP_DESCRIPTION = "AI Crypto Assistants on BSC — Your smartest crypto companions";
+export const APP_NAME = "AVA";
+export const APP_DESCRIPTION = "Autonomous Virtual Agents on BSC — Your smartest crypto companions";
