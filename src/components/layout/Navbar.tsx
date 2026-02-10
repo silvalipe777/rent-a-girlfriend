@@ -15,9 +15,10 @@ export default function Navbar() {
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:shadow-amber-500/40 transition-shadow">
             <span className="text-white text-sm font-bold">AVA</span>
           </div>
-          <span className="font-bold text-lg gradient-text hidden sm:block">
-            AVA
-          </span>
+          <div className="hidden sm:flex items-baseline gap-1.5">
+            <span className="font-bold text-lg gradient-text">AVA</span>
+            <span className="text-[10px] text-gray-500 font-medium tracking-wide">Autonomous Virtual Agents</span>
+          </div>
         </Link>
 
         <div className="hidden md:flex items-center gap-1">
