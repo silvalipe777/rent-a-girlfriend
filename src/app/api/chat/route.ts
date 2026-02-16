@@ -51,7 +51,9 @@ export async function POST(req: Request) {
     return new Response(readable, {
       headers: { "Content-Type": "text/plain; charset=utf-8" },
     });
-  } catch {
-    return NextResponse.json({ error: "Chat error" }, { status: 500 });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Unknown error";
+    console.error("Chat API error:", message);
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
