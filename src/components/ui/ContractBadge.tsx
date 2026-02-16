@@ -5,7 +5,7 @@ export default function ContractBadge({ address }: { address: string }) {
   const [copied, setCopied] = useState(false);
 
   const hasAddress = !!address;
-  const short = hasAddress ? `${address.slice(0, 6)}...${address.slice(-4)}` : "待公布";
+  const display = hasAddress ? address : "待公布";
 
   const copy = async () => {
     if (!hasAddress) return;
@@ -20,7 +20,7 @@ export default function ContractBadge({ address }: { address: string }) {
       className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:border-amber-500/30 backdrop-blur-sm transition-all group cursor-pointer"
     >
       <span className="text-[10px] text-gray-500 uppercase tracking-wider font-semibold">合约</span>
-      <span className="text-xs text-amber-400 font-mono">{short}</span>
+      <span className="text-xs text-amber-400 font-mono break-all">{display}</span>
       {hasAddress && (
         <svg className="w-3.5 h-3.5 text-gray-500 group-hover:text-amber-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           {copied ? (

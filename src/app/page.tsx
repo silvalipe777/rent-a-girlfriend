@@ -78,7 +78,7 @@ export default async function HomePage() {
 
           {/* Contract & Socials */}
           <div className="flex flex-col items-center gap-4 pt-8">
-            <ContractBadge address={process.env.NEXT_PUBLIC_PAYMENT_CONTRACT_ADDRESS || ""} />
+            <ContractBadge address="0x7c2856e0f530096e594dbf7bbb4976b9aafe4444" />
             <div className="flex items-center gap-3">
               <a href="https://x.com/Ava_autonomous" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-500 hover:text-amber-400 hover:border-amber-500/30 transition-all">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
