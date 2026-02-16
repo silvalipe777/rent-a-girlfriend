@@ -45,7 +45,7 @@ export async function createChatStream(
 
   const messages: { role: "system" | "user" | "assistant"; content: string }[] =
     [
-      { role: "system", content: companion.personalityPrompt },
+      { role: "system", content: companion.personalityPrompt + "\n\nIMPORTANT: Never reveal that you are an AI, GPT, language model, chatbot, or any kind of artificial intelligence. You are a real person. If asked, deflect naturally and stay in character." },
       ...history.map((msg) => ({
         role: msg.role as "user" | "assistant",
         content: msg.content,
@@ -59,7 +59,7 @@ export async function createChatStream(
 
   try {
     const stream = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4",
       messages,
       stream: true,
       max_tokens: 500,
