@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Container from "./Container";
 
 export default function Footer() {
@@ -22,6 +23,7 @@ export default function Footer() {
           </div>
 
           <div className="flex gap-4">
+            <Link href="/whitepaper" className="text-gray-600 hover:text-amber-400 transition-colors text-xs">Whitepaper</Link>
             <span className="text-gray-600 hover:text-amber-400 transition-colors text-xs cursor-pointer">条款</span>
             <span className="text-gray-600 hover:text-amber-400 transition-colors text-xs cursor-pointer">隐私</span>
           </div>

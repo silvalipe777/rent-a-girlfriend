@@ -29,6 +29,9 @@ export default function Navbar() {
               我的聊天
             </Link>
           )}
+          <Link href="/whitepaper" className="px-4 py-2 text-sm text-gray-400 hover:text-white rounded-full hover:bg-white/5 transition-all">
+            Whitepaper
+          </Link>
           <Link href="/admin" className="px-4 py-2 text-sm text-gray-400 hover:text-white rounded-full hover:bg-white/5 transition-all">
             管理
           </Link>
