@@ -33,7 +33,7 @@ export async function createChatStream(
   });
 
   const stream = await openai.chat.completions.create({
-    model: "gpt-4",
+    model: "gpt-3.5-turbo",
     messages,
     stream: true,
     max_tokens: 500,
