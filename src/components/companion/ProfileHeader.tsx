@@ -59,16 +59,16 @@ export default function ProfileHeader({
             {available && (
               <div className="flex items-center gap-1.5 bg-green-500/10 border border-green-500/20 rounded-full px-3 py-1">
                 <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-xs text-green-300 font-medium">Available</span>
+                <span className="text-xs text-green-300 font-medium">可用</span>
               </div>
             )}
           </div>
           <div className="flex flex-wrap items-center gap-2 justify-center md:justify-start">
             <Badge variant="pink">{emotionalStyle}</Badge>
-            <Badge variant="default">{ageAppearance} years old</Badge>
+            <Badge variant="default">{ageAppearance}岁</Badge>
           </div>
           <p className="text-gray-400 text-lg max-w-lg leading-relaxed">{tagline}</p>
-          <p className="text-gray-600 text-xs tracking-wide">Fictional AI-generated character</p>
+          <p className="text-gray-600 text-xs tracking-wide">虚构的AI生成角色</p>
         </div>
       </div>
     </div>

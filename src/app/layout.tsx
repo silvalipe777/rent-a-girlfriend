@@ -6,9 +6,12 @@ import Providers from "./providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AVA - Autonomous Virtual Agents on BSC",
+  title: "AVA - BSC链上的自主虚拟代理",
   description:
-    "Autonomous Virtual Agents specialized in crypto. Each agent masters a different area — DeFi, NFTs, trading, airdrops, and more.",
+    "专注于加密领域的自主虚拟代理。每位助手精通不同领域 — DeFi、NFT、交易、空投等。",
+  icons: {
+    icon: "/logo.PNG",
+  },
 };
 
 export default function RootLayout({
@@ -17,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="zh">
       <body className={`${inter.className} antialiased bg-gray-950 text-white`}>
         <Providers>
           {children}

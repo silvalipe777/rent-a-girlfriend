@@ -46,12 +46,12 @@ export default async function MarketplacePage({ searchParams }: Props) {
       <Container className="relative">
         {/* Header */}
         <div className="mb-10">
-          <span className="text-xs uppercase tracking-widest text-amber-400 font-semibold">Explore</span>
+          <span className="text-xs uppercase tracking-widest text-amber-400 font-semibold">探索</span>
           <h1 className="text-5xl font-black mt-2">
-            <span className="gradient-text">Marketplace</span>
+            <span className="gradient-text">市场</span>
           </h1>
           <p className="text-gray-400/70 mt-3 max-w-md">
-            Find the perfect AI Companion for you. Filter by personality, style or price.
+            找到最适合你的AI助手。按个性、风格或价格筛选。
           </p>
         </div>
 
@@ -65,7 +65,7 @@ export default async function MarketplacePage({ searchParams }: Props) {
         {/* Results count */}
         <div className="flex items-center justify-between mb-6">
           <p className="text-sm text-gray-500">
-            <span className="text-amber-400 font-semibold">{companions.length}</span> companions found
+            <span className="text-amber-400 font-semibold">{companions.length}</span> 个助手
           </p>
         </div>
 

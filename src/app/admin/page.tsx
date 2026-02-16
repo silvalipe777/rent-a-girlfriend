@@ -42,7 +42,7 @@ export default function AdminPage() {
   };
 
   const handleGenerateImage = async (companionId: string, variant: number) => {
-    setMessage(`Gerando imagem (variant ${variant})...`);
+    setMessage(`正在生成图片 (变体 ${variant})...`);
     try {
       const res = await fetch("/api/generate-image", {
         method: "POST",
@@ -51,13 +51,13 @@ export default function AdminPage() {
       });
       const data = await res.json();
       if (res.ok) {
-        setMessage(`Image generated: ${data.path}`);
+        setMessage(`图片已生成: ${data.path}`);
         fetchCompanions();
       } else {
-        setMessage(`Error: ${data.error}`);
+        setMessage(`错误: ${data.error}`);
       }
     } catch {
-      setMessage("Error generating image");
+      setMessage("图片生成失败");
     }
   };
 
@@ -65,7 +65,7 @@ export default function AdminPage() {
     <div className="min-h-screen bg-gray-950 py-8">
       <Container>
         <h1 className="text-3xl font-bold mb-8">
-          <span className="gradient-text">Admin Panel</span>
+          <span className="gradient-text">管理面板</span>
         </h1>
 
         {message && (
@@ -76,20 +76,20 @@ export default function AdminPage() {
 
         {/* Seed Button */}
         <Card className="p-6 mb-8">
-          <h2 className="text-xl font-bold mb-4">Database</h2>
+          <h2 className="text-xl font-bold mb-4">数据库</h2>
           <div className="flex gap-3">
             <Button onClick={handleSeed} disabled={loading}>
-              {loading ? "Seeding..." : "Seed 10 AI Companions"}
+              {loading ? "播种中..." : "播种10个AI助手"}
             </Button>
           </div>
           <p className="text-gray-500 text-sm mt-2">
-            Seeds the database with 10 Crypto AI Companions
+            向数据库播种10个加密AI助手
           </p>
         </Card>
 
         {/* Companions List */}
         <h2 className="text-xl font-bold mb-4">
-          Companions ({companions.length})
+          助手 ({companions.length})
         </h2>
         <div className="grid gap-4">
           {companions.map((c) => (
@@ -111,7 +111,7 @@ export default function AdminPage() {
                   <div className="flex items-center gap-2 mb-1">
                     <h3 className="font-bold">{c.name}</h3>
                     <Badge variant="pink">{c.emotionalStyle}</Badge>
-                    {c.available && <Badge variant="green">Ativo</Badge>}
+                    {c.available && <Badge variant="green">活跃</Badge>}
                   </div>
                   <p className="text-xs text-gray-500">ID: {c.id}</p>
                 </div>
@@ -123,7 +123,7 @@ export default function AdminPage() {
                     variant={c.avatarMain ? "ghost" : "primary"}
                     onClick={() => handleGenerateImage(c.id, 0)}
                   >
-                    {c.avatarMain ? "Regen Principal" : "Gerar Avatar"}
+                    {c.avatarMain ? "重新生成" : "生成头像"}
                   </Button>
                   <Button
                     size="sm"

@@ -16,9 +16,9 @@ interface PricingCardProps {
 }
 
 const plans = [
-  { key: "hourly", label: "1 Hour", field: "pricePerHour" as const },
-  { key: "daily", label: "1 Day", field: "pricePerDay" as const, popular: true },
-  { key: "weekly", label: "1 Week", field: "pricePerWeek" as const },
+  { key: "hourly", label: "1小时", field: "pricePerHour" as const },
+  { key: "daily", label: "1天", field: "pricePerDay" as const, popular: true },
+  { key: "weekly", label: "1周", field: "pricePerWeek" as const },
 ];
 
 export default function PricingCard({
@@ -57,7 +57,7 @@ export default function PricingCard({
     if (res.ok) {
       window.location.href = `/chat/${data.id}`;
     } else {
-      alert(data.error || "Rental error");
+      alert(data.error || "租用失败");
     }
   };
 
@@ -78,18 +78,18 @@ export default function PricingCard({
           (c) => c.id === "injected" || c.name === "MetaMask"
         );
         if (!metaMaskConnector) {
-          alert("MetaMask not found. Please install MetaMask.");
+          alert("未找到MetaMask。请安装MetaMask。");
           return;
         }
         await connectAsync({ connector: metaMaskConnector });
       }
 
       // Always switch to BSC (MetaMask may be on Ethereum)
-      setStatus("Switching to BSC...");
+      setStatus("切换至BSC...");
       await switchChainAsync({ chainId: 56 });
 
       // Send BNB to contract
-      setStatus("Confirm in MetaMask...");
+      setStatus("请在MetaMask中确认...");
       const hash = await writeContractAsync({
         address: PAYMENT_CONTRACT_ADDRESS,
         abi: PAYMENT_CONTRACT_ABI,
@@ -99,7 +99,7 @@ export default function PricingCard({
       });
 
       // Wait for on-chain confirmation
-      setStatus("Waiting for confirmation...");
+      setStatus("等待链上确认...");
       const { createPublicClient, http } = await import("viem");
       const { bsc } = await import("viem/chains");
       const client = createPublicClient({
@@ -111,21 +111,21 @@ export default function PricingCard({
       const receipt = await client.waitForTransactionReceipt({ hash });
 
       if (receipt.status !== "success") {
-        alert("Transaction failed on-chain.");
+        alert("链上交易失败。");
         return;
       }
 
       // Create rental with verified txHash
-      setStatus("Activating...");
+      setStatus("激活中...");
       await createRental(hash);
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "";
       if (msg.includes("User rejected") || msg.includes("rejected")) {
         setStatus("");
       } else if (msg) {
-        alert("Payment error: " + msg.slice(0, 100));
+        alert("支付错误: " + msg.slice(0, 100));
       } else {
-        alert("Connection error");
+        alert("连接错误");
       }
     } finally {
       setLoading(false);
@@ -136,8 +136,8 @@ export default function PricingCard({
   return (
     <div className="glass rounded-2xl p-6 space-y-6">
       <div className="space-y-1">
-        <span className="text-xs uppercase tracking-widest text-amber-400 font-semibold">Plans</span>
-        <h2 className="text-xl font-bold text-white">Unlock {companionName}</h2>
+        <span className="text-xs uppercase tracking-widest text-amber-400 font-semibold">方案</span>
+        <h2 className="text-xl font-bold text-white">解锁 {companionName}</h2>
       </div>
 
       <div className="space-y-3">
@@ -164,7 +164,7 @@ export default function PricingCard({
               <span className="font-medium text-white">{plan.label}</span>
               {plan.popular && (
                 <span className="text-[10px] bg-gradient-to-r from-yellow-500/20 to-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full border border-amber-500/20">
-                  Popular
+                  热门
                 </span>
               )}
             </div>
@@ -181,16 +181,16 @@ export default function PricingCard({
 
       <Button className="w-full neon-pulse" size="lg" onClick={handleRent} disabled={loading}>
         {loading
-          ? status || "Processing..."
+          ? status || "处理中..."
           : isFree
-            ? "Unlock Now"
-            : `Pay ${formatCurrency(selectedPrice)}`}
+            ? "立即解锁"
+            : `支付 ${formatCurrency(selectedPrice)}`}
       </Button>
 
       <p className="text-[10px] text-gray-600 text-center leading-relaxed">
         {isFree
-          ? "Free — no payment required."
-          : "Payment via BSC. Verified on-chain."}
+          ? "免费 — 无需支付。"
+          : "通过BSC支付。链上验证。"}
       </p>
     </div>
   );

@@ -1,5 +1,5 @@
 export function formatCurrency(value: number): string {
-  if (value === 0) return "Free";
+  if (value === 0) return "免费";
   return `${value} BNB`;
 }
 
@@ -35,15 +35,15 @@ export function isRentalActive(expiresAt: Date): boolean {
 export function getTimeRemaining(expiresAt: Date): string {
   const now = new Date();
   const diff = new Date(expiresAt).getTime() - now.getTime();
-  if (diff <= 0) return "Expired";
+  if (diff <= 0) return "已过期";
 
   const hours = Math.floor(diff / (1000 * 60 * 60));
   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 
   if (hours > 24) {
     const days = Math.floor(hours / 24);
-    return `${days}d ${hours % 24}h remaining`;
+    return `剩余${days}天${hours % 24}小时`;
   }
-  if (hours > 0) return `${hours}h ${minutes}m remaining`;
-  return `${minutes}m remaining`;
+  if (hours > 0) return `剩余${hours}小时${minutes}分钟`;
+  return `剩余${minutes}分钟`;
 }

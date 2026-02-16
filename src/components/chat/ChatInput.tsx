@@ -22,7 +22,7 @@ export default function ChatInput({ onSend, disabled }: ChatInputProps) {
       <input
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        placeholder="Say something sweet..."
+        placeholder="说点什么..."
         disabled={disabled}
         className="flex-1 bg-white/[0.04] border border-pink-500/15 rounded-2xl px-5 py-3.5 text-white placeholder-pink-300/30 focus:outline-none focus:border-pink-500/40 focus:bg-white/[0.06] focus:shadow-lg focus:shadow-pink-500/5 transition-all disabled:opacity-50"
       />

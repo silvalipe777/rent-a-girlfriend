@@ -27,7 +27,7 @@ export default function WalletLoginButton() {
           (c) => c.id === "injected" || c.name === "MetaMask"
         );
         if (!metaMaskConnector) {
-          setError("MetaMask not found. Please install MetaMask extension.");
+          setError("未找到MetaMask。请安装MetaMask扩展。");
           setLoading(false);
           return;
         }
@@ -36,7 +36,7 @@ export default function WalletLoginButton() {
       }
 
       if (!walletAddress) {
-        setError("Could not get wallet address.");
+        setError("无法获取钱包地址。");
         setLoading(false);
         return;
       }
@@ -52,7 +52,7 @@ export default function WalletLoginButton() {
       const message = new SiweMessage({
         domain: window.location.host,
         address: walletAddress,
-        statement: "Sign in to AVA with your wallet.",
+        statement: "使用钱包登录AVA。",
         uri: window.location.origin,
         version: "1",
         chainId: 56,
@@ -72,7 +72,7 @@ export default function WalletLoginButton() {
       });
 
       if (result?.error) {
-        setError("Wallet authentication failed. Please try again.");
+        setError("钱包认证失败。请重试。");
       } else {
         router.push("/marketplace");
         router.refresh();
@@ -80,9 +80,9 @@ export default function WalletLoginButton() {
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : "";
       if (errorMessage.includes("User rejected") || errorMessage.includes("rejected")) {
-        setError("Signature request was rejected.");
+        setError("签名请求被拒绝。");
       } else {
-        setError("Failed to connect wallet. Is MetaMask installed?");
+        setError("钱包连接失败。MetaMask是否已安装？");
       }
     } finally {
       setLoading(false);
@@ -114,10 +114,10 @@ export default function WalletLoginButton() {
           <path d="M12 33.5L17 31.1L12.7 27.4L12 33.5Z" fill="#E4761B" stroke="#E4761B" strokeLinecap="round" strokeLinejoin="round"/>
           <path d="M23 31.1L28 33.5L27.3 27.4L23 31.1Z" fill="#E4761B" stroke="#E4761B" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
-        {loading ? "Connecting..." : "Connect MetaMask"}
+        {loading ? "连接中..." : "连接MetaMask"}
       </Button>
       <p className="text-[10px] text-gray-600 text-center">
-        BSC Network (BNB)
+        BSC网络 (BNB)
       </p>
     </div>
   );

@@ -52,7 +52,7 @@ export default function ChatsPage() {
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 rounded-full border-2 border-amber-500/30 border-t-amber-500 animate-spin" />
-          <p className="text-gray-500 text-sm">Loading chats...</p>
+          <p className="text-gray-500 text-sm">加载聊天中...</p>
         </div>
       </div>
     );
@@ -67,12 +67,12 @@ export default function ChatsPage() {
       <Container className="relative">
         {/* Header */}
         <div className="mb-10">
-          <span className="text-xs uppercase tracking-widest text-amber-400 font-semibold">Your conversations</span>
+          <span className="text-xs uppercase tracking-widest text-amber-400 font-semibold">你的对话</span>
           <h1 className="text-5xl font-black mt-2">
-            <span className="gradient-text">My Chats</span>
+            <span className="gradient-text">我的聊天</span>
           </h1>
           <p className="text-gray-400/70 mt-3 max-w-md">
-            View your active conversations and rental history.
+            查看你的活跃对话和租用历史。
           </p>
         </div>
 
@@ -84,11 +84,11 @@ export default function ChatsPage() {
               </svg>
             </div>
             <div>
-              <p className="text-gray-400 text-lg font-medium">No conversations yet</p>
-              <p className="text-gray-600 text-sm mt-1">Rent a companion to start chatting!</p>
+              <p className="text-gray-400 text-lg font-medium">暂无对话</p>
+              <p className="text-gray-600 text-sm mt-1">租用一个助手开始聊天吧！</p>
             </div>
             <Link href="/marketplace">
-              <Button size="lg" className="neon-pulse">Explore Companions</Button>
+              <Button size="lg" className="neon-pulse">探索助手</Button>
             </Link>
           </div>
         ) : (
@@ -99,9 +99,9 @@ export default function ChatsPage() {
                 <div className="flex items-center gap-3 mb-6">
                   <div className="flex items-center gap-1.5 bg-green-500/10 border border-green-500/20 rounded-full px-3 py-1">
                     <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                    <span className="text-xs text-green-300 font-medium">Active</span>
+                    <span className="text-xs text-green-300 font-medium">活跃</span>
                   </div>
-                  <span className="text-sm text-gray-500">{activeRentals.length} chat{activeRentals.length > 1 ? "s" : ""}</span>
+                  <span className="text-sm text-gray-500">{activeRentals.length} 个聊天</span>
                 </div>
                 <div className="grid gap-4">
                   {activeRentals.map((rental) => (
@@ -115,8 +115,8 @@ export default function ChatsPage() {
             {expiredRentals.length > 0 && (
               <div>
                 <div className="flex items-center gap-3 mb-6">
-                  <span className="text-xs uppercase tracking-widest text-gray-600 font-medium">History</span>
-                  <span className="text-sm text-gray-600">{expiredRentals.length} chat{expiredRentals.length > 1 ? "s" : ""}</span>
+                  <span className="text-xs uppercase tracking-widest text-gray-600 font-medium">历史</span>
+                  <span className="text-sm text-gray-600">{expiredRentals.length} 个聊天</span>
                 </div>
                 <div className="grid gap-4">
                   {expiredRentals.map((rental) => (
@@ -135,9 +135,9 @@ export default function ChatsPage() {
 function RentalCard({ rental, active }: { rental: RentalItem; active: boolean }) {
   const timeLeft = getTimeLeft(rental.expiresAt);
   const planLabel: Record<string, string> = {
-    hourly: "1 Hour",
-    daily: "1 Day",
-    weekly: "1 Week",
+    hourly: "1小时",
+    daily: "1天",
+    weekly: "1周",
   };
 
   return (
@@ -169,7 +169,7 @@ function RentalCard({ rental, active }: { rental: RentalItem; active: boolean })
             <Badge variant="pink">{rental.companion.emotionalStyle}</Badge>
           </div>
           <div className="flex items-center gap-3 mt-1">
-            <span className="text-xs text-gray-500">Plan: {planLabel[rental.plan] || rental.plan}</span>
+            <span className="text-xs text-gray-500">方案: {planLabel[rental.plan] || rental.plan}</span>
             <span className="text-xs text-gray-600">•</span>
             <span className="text-xs text-gray-500">{formatCurrency(rental.priceCharged)}</span>
             {active && (
@@ -190,7 +190,7 @@ function RentalCard({ rental, active }: { rental: RentalItem; active: boolean })
               </svg>
             </div>
           ) : (
-            <span className="text-xs text-gray-600">Expired</span>
+            <span className="text-xs text-gray-600">已过期</span>
           )}
         </div>
       </div>
@@ -200,10 +200,10 @@ function RentalCard({ rental, active }: { rental: RentalItem; active: boolean })
 
 function getTimeLeft(expiresAt: string): string {
   const diff = new Date(expiresAt).getTime() - Date.now();
-  if (diff <= 0) return "Expired";
+  if (diff <= 0) return "已过期";
   const hours = Math.floor(diff / (1000 * 60 * 60));
   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  if (hours > 24) return `${Math.floor(hours / 24)}d ${hours % 24}h remaining`;
-  if (hours > 0) return `${hours}h ${minutes}m remaining`;
-  return `${minutes}m remaining`;
+  if (hours > 24) return `剩余${Math.floor(hours / 24)}天${hours % 24}小时`;
+  if (hours > 0) return `剩余${hours}小时${minutes}分钟`;
+  return `剩余${minutes}分钟`;
 }

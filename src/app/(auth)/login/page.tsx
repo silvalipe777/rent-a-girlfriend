@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -28,14 +29,12 @@ export default function LoginPage() {
         <div className="glass rounded-2xl p-8 space-y-8">
           {/* Logo */}
           <div className="text-center space-y-4">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center mx-auto shadow-lg shadow-amber-500/20">
-              <span className="text-black text-xl font-bold">CG</span>
-            </div>
+            <Image src="/logo.PNG" alt="AVA" width={56} height={56} className="rounded-2xl mx-auto shadow-lg shadow-amber-500/20" />
             <div>
               <h1 className="text-3xl font-black">
-                <span className="gradient-text">Welcome</span>
+                <span className="gradient-text">欢迎</span>
               </h1>
-              <p className="text-gray-500 text-sm mt-2">Choose how you want to enter</p>
+              <p className="text-gray-500 text-sm mt-2">选择你的登录方式</p>
             </div>
           </div>
 
@@ -46,12 +45,12 @@ export default function LoginPage() {
             className="w-full"
             size="lg"
           >
-            {guestLoading ? "Entering..." : "Enter as Guest"}
+            {guestLoading ? "进入中..." : "游客进入"}
           </Button>
 
           <div className="flex items-center gap-3">
             <div className="flex-1 h-px bg-amber-500/10" />
-            <span className="text-xs text-gray-600">or</span>
+            <span className="text-xs text-gray-600">或</span>
             <div className="flex-1 h-px bg-amber-500/10" />
           </div>
 

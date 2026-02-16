@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
 import Container from "./Container";
 import WalletBadge from "./WalletBadge";
@@ -12,26 +13,24 @@ export default function Navbar() {
     <nav className="sticky top-0 z-40 glass">
       <Container className="flex items-center justify-between h-16">
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:shadow-amber-500/40 transition-shadow">
-            <span className="text-white text-sm font-bold">AVA</span>
-          </div>
+          <Image src="/logo.PNG" alt="AVA" width={32} height={32} className="rounded-lg shadow-lg shadow-amber-500/20 group-hover:shadow-amber-500/40 transition-shadow" />
           <div className="hidden sm:flex items-baseline gap-1.5">
             <span className="font-bold text-lg gradient-text">AVA</span>
-            <span className="text-[10px] text-gray-500 font-medium tracking-wide">Autonomous Virtual Agents</span>
+            <span className="text-[10px] text-gray-500 font-medium tracking-wide">自主虚拟代理</span>
           </div>
         </Link>
 
         <div className="hidden md:flex items-center gap-1">
           <Link href="/marketplace" className="px-4 py-2 text-sm text-gray-400 hover:text-white rounded-full hover:bg-white/5 transition-all">
-            Marketplace
+            市场
           </Link>
           {session && (
             <Link href="/chats" className="px-4 py-2 text-sm text-gray-400 hover:text-white rounded-full hover:bg-white/5 transition-all">
-              My Chats
+              我的聊天
             </Link>
           )}
           <Link href="/admin" className="px-4 py-2 text-sm text-gray-400 hover:text-white rounded-full hover:bg-white/5 transition-all">
-            Admin
+            管理
           </Link>
         </div>
 
@@ -48,12 +47,12 @@ export default function Navbar() {
                 <WalletBadge walletAddress={session.user.walletAddress} />
               )}
               <Button variant="ghost" size="sm" onClick={() => signOut()}>
-                Logout
+                退出
               </Button>
             </>
           ) : (
             <Link href="/login">
-              <Button variant="primary" size="sm">Connect Wallet</Button>
+              <Button variant="primary" size="sm">连接钱包</Button>
             </Link>
           )}
         </div>

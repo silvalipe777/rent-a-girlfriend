@@ -49,7 +49,7 @@ export default function ChatPage() {
       <div className="flex items-center justify-center h-[calc(100vh-4rem)]">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 rounded-full border-2 border-amber-500/30 border-t-amber-500 animate-spin" />
-          <p className="text-gray-500 text-sm">Loading chat...</p>
+          <p className="text-gray-500 text-sm">加载聊天中...</p>
         </div>
       </div>
     );
@@ -88,7 +88,7 @@ export default function ChatPage() {
         </div>
         <div className="flex items-center gap-1.5 bg-green-500/10 border border-green-500/20 rounded-full px-3 py-1">
           <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-          <span className="text-[10px] text-green-300 font-medium">Online</span>
+          <span className="text-[10px] text-green-300 font-medium">在线</span>
         </div>
       </div>
 
@@ -103,12 +103,12 @@ export default function ChatPage() {
       {/* Input */}
       {isExpired ? (
         <div className="p-5 border-t border-amber-500/10 glass text-center space-y-3">
-          <p className="text-gray-400 text-sm">Your rental has expired.</p>
+          <p className="text-gray-400 text-sm">你的租用已过期。</p>
           <button
             onClick={() => window.location.href = `/companion/${rental.companion.id}`}
             className="text-sm font-semibold gradient-text hover:opacity-80 transition-opacity"
           >
-            Renew to keep chatting →
+            续费继续聊天 →
           </button>
         </div>
       ) : (

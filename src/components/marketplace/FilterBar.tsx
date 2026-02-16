@@ -31,25 +31,25 @@ export default function FilterBar() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
           <Input
-            placeholder="Search companion..."
+            placeholder="搜索助手..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="pl-11"
           />
         </div>
-        <Button type="submit">Search</Button>
+        <Button type="submit">搜索</Button>
       </form>
 
       {/* Emotional Style Filters */}
       <div>
-        <span className="text-[10px] uppercase tracking-widest text-gray-600 font-medium mb-2 block">Emotional Style</span>
+        <span className="text-[10px] uppercase tracking-widest text-gray-600 font-medium mb-2 block">情感风格</span>
         <div className="flex flex-wrap gap-2">
           <Button
             variant={!searchParams.get("emotionalStyle") ? "primary" : "ghost"}
             size="sm"
             onClick={() => applyFilter("emotionalStyle", "")}
           >
-            All
+            全部
           </Button>
           {EMOTIONAL_STYLES.map((style) => (
             <Button
@@ -66,13 +66,13 @@ export default function FilterBar() {
 
       {/* Sort */}
       <div>
-        <span className="text-[10px] uppercase tracking-widest text-gray-600 font-medium mb-2 block">Sort by</span>
+        <span className="text-[10px] uppercase tracking-widest text-gray-600 font-medium mb-2 block">排序</span>
         <div className="flex flex-wrap gap-2">
           {[
-            { label: "Most recent", value: "newest" },
-            { label: "Lowest price", value: "price_asc" },
-            { label: "Highest price", value: "price_desc" },
-            { label: "Name", value: "name" },
+            { label: "最新", value: "newest" },
+            { label: "价格最低", value: "price_asc" },
+            { label: "价格最高", value: "price_desc" },
+            { label: "名称", value: "name" },
           ].map((opt) => (
             <Button
               key={opt.value}

@@ -11,19 +11,19 @@ export default function Footer() {
             </div>
             <div className="flex items-baseline gap-1.5">
               <span className="font-bold gradient-text">AVA</span>
-              <span className="text-[10px] text-gray-500 font-medium tracking-wide">Autonomous Virtual Agents</span>
+              <span className="text-[10px] text-gray-500 font-medium tracking-wide">自主虚拟代理</span>
             </div>
           </div>
 
           <div className="text-center">
             <p className="text-gray-600 text-[10px]">
-              &copy; 2026 AVA - Autonomous Virtual Agents on BSC
+              &copy; 2026 AVA - BSC链上的自主虚拟代理
             </p>
           </div>
 
           <div className="flex gap-4">
-            <span className="text-gray-600 hover:text-amber-400 transition-colors text-xs cursor-pointer">Terms</span>
-            <span className="text-gray-600 hover:text-amber-400 transition-colors text-xs cursor-pointer">Privacy</span>
+            <span className="text-gray-600 hover:text-amber-400 transition-colors text-xs cursor-pointer">条款</span>
+            <span className="text-gray-600 hover:text-amber-400 transition-colors text-xs cursor-pointer">隐私</span>
           </div>
         </div>
       </Container>

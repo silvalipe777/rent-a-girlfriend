@@ -37,12 +37,12 @@ export default function CompanionCard({ companion }: { companion: AICompanionRaw
           {/* Top badges */}
           <div className="absolute top-3 left-3 right-3 flex justify-between items-start">
             {companion.featured && (
-              <Badge variant="yellow">Featured</Badge>
+              <Badge variant="yellow">精选</Badge>
             )}
             {companion.available && (
               <div className="flex items-center gap-1.5 bg-green-500/20 backdrop-blur-sm border border-green-500/30 rounded-full px-2.5 py-1">
                 <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-[10px] text-green-300 font-medium">Online</span>
+                <span className="text-[10px] text-green-300 font-medium">在线</span>
               </div>
             )}
           </div>
@@ -50,7 +50,7 @@ export default function CompanionCard({ companion }: { companion: AICompanionRaw
           {/* Bottom name overlay */}
           <div className="absolute bottom-0 left-0 right-0 p-4">
             <h3 className="text-2xl font-bold text-white drop-shadow-lg">{companion.name}</h3>
-            <p className="text-amber-300/80 text-xs mt-1">{companion.ageAppearance} y/o</p>
+            <p className="text-amber-300/80 text-xs mt-1">{companion.ageAppearance}岁</p>
           </div>
         </div>
 
@@ -64,11 +64,11 @@ export default function CompanionCard({ companion }: { companion: AICompanionRaw
 
           <div className="flex items-center justify-between pt-3 border-t border-amber-500/10">
             <div>
-              <span className="text-xs text-gray-500 block">From</span>
+              <span className="text-xs text-gray-500 block">起价</span>
               <span className="text-lg font-bold gradient-text">
                 {formatCurrency(companion.pricePerHour)}
               </span>
-              <span className="text-xs text-gray-500">/hour</span>
+              <span className="text-xs text-gray-500">/小时</span>
             </div>
             <div className="w-10 h-10 rounded-full bg-gradient-to-r from-yellow-500 to-amber-500 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg shadow-amber-500/20">
               <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
